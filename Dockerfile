@@ -1,26 +1,27 @@
-FROM ubuntu:trusty
+FROM ubuntu:bionic
 MAINTAINER cedric@zestprod.com
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get install -y apache2
 
-RUN sudo apt-get install -y software-properties-common \
+RUN apt-get install -y software-properties-common \
   && add-apt-repository ppa:ondrej/php \
   && apt-get update
 
 RUN apt-get install -y --force-yes \
   wget \
-  php5.6 \
-  php5.6-mysql \
-  php5.6-ldap \
-  php5.6-xmlrpc \
+  php7.3 \
+  php7.3-mysql \
+  php7.3-ldap \
+  php7.3-xmlrpc \
   curl \
-  php5.6-curl \
-  php5.6-gd \
-  php5.6-mbstring \
-  php5.6-simplexml \
-  php5.6-xml \
-  php5.6-apcu \
-  php5.6-imap
+  php7.3-curl \
+  php7.3-gd \
+  php7.3-mbstring \
+  php7.3-simplexml \
+  php7.3-xml \
+  php7.3-apcu \
+  php7.3-imap
 
 RUN a2enmod rewrite && service apache2 stop
 WORKDIR /var/www/html
